@@ -1,4 +1,4 @@
-git clone https://github.com/aws-samples/aws-codepipeline-third-party-git-repositories.git .
+git clone https://github.com/karthickcse05/aws-codepipeline-third-party-git-repositories.git .
 
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
