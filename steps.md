@@ -1,6 +1,6 @@
-git clone https://github.com/karthickcse05/aws-codepipeline-third-party-git-repositories.git .
+### git clone https://github.com/karthickcse05/aws-codepipeline-third-party-git-repositories.git .
 
-ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+1. ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 aws secretsmanager create-secret --name codepipeline_git --secret-string file://codepipeline_git_rsa --profile karthick-iam --region us-east-1 --query ARN --output text
 
@@ -66,7 +66,7 @@ ParameterKey=SourceActionVersion,ParameterValue=1 \
 ParameterKey=SourceActionProvider,ParameterValue=CustomSourceForGit \
 ParameterKey=CodePipelineName,ParameterValue=sampleCodePipeline \
 ParameterKey=SecretsManagerArnForSSHPrivateKey,ParameterValue=${SecretsManagerArn} \
-ParameterKey=GitWebHookIpAddress,ParameterValue=34.74.90.64/28 \
+ParameterKey=GitHubToken,ParameterValue=glpat-cD_s1XFxgYJhNchGnJXr \
 --capabilities CAPABILITY_IAM --profile karthick-iam --region us-east-1
 
 
@@ -76,10 +76,11 @@ aws cloudformation describe-stacks --stack-name ${SAMPLE_STACK_NAME} --profile k
 add webhook URL in the gitlab project
 
 
+aws cloudformation delete-stack --stack-name third-party-codepipeline-git-source-test --profile karthick-iam --region us-east-1
 
 aws cloudformation delete-stack --stack-name thirdparty-codepipeline-git-source --profile karthick-iam --region us-east-1
 
-aws cloudformation delete-stack --stack-name third-party-codepipeline-git-source-test --profile karthick-iam --region us-east-1
+
 
 aws cloudformation delete-stack --stack-name vpc-gitlab --profile karthick-iam --region us-east-1
 

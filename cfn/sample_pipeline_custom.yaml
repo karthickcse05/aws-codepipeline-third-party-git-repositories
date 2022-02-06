@@ -40,8 +40,8 @@ Parameters:
     Description: SSH Private Key for Git Repo Access that was added in the AWS Secrets Manager.
     Type: String
     NoEcho: 'true'
-  GitWebHookIpAddress:
-    Description: Git WebHook source IP address.
+  GitLabToken:
+    Description: GitLab OAuth Token.
     Type: String
 
 Resources:
@@ -235,9 +235,9 @@ Resources:
       Filters:
         - JsonPath: '$.ref'
           MatchEquals: 'refs/heads/{Branch}'
-      Authentication: IP
+      Authentication: GITHUB_HMAC
       AuthenticationConfiguration:
-        AllowedIPRange: !Ref GitWebHookIpAddress
+        SecretToken: !Ref GitLabToken 
       RegisterWithThirdParty: false
 
   ArtifactStoreBucket:
